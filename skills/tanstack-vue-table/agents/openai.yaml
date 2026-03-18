@@ -1,0 +1,4 @@
+interface:
+  display_name: "TanStack Vue Table"
+  short_description: "Help with TanStack Vue Table tasks"
+  default_prompt: "Use $tanstack-vue-table to build or debug Vue tables with @tanstack/vue-table."

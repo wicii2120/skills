@@ -1,0 +1,4 @@
+interface:
+  display_name: "TanStack Vue Query"
+  short_description: "Help with TanStack Vue Query tasks"
+  default_prompt: "Use $tanstack-vue-query to implement or debug Vue data fetching with @tanstack/vue-query."

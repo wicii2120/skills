@@ -1,0 +1,4 @@
+interface:
+  display_name: "TanStack Vue Form"
+  short_description: "Help with TanStack Vue Form tasks"
+  default_prompt: "Use $tanstack-vue-form to build or debug Vue forms with @tanstack/vue-form."

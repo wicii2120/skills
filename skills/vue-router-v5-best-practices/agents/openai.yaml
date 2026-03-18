@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vue Router v5 Best Practices"
+  short_description: "Vue Router v5 routing and loader help"
+  default_prompt: "Use $vue-router-v5-best-practices to work on Vue Router v5 routing, guards, data loaders, or migration."
