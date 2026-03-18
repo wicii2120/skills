@@ -1,0 +1,4 @@
+interface:
+  display_name: "TanStack Vue Virtual"
+  short_description: "Help with TanStack Vue Virtual tasks"
+  default_prompt: "Use $tanstack-vue-virtual to implement or debug Vue 3 virtualization with @tanstack/vue-virtual."
