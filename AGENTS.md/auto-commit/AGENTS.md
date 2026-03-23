@@ -2,5 +2,5 @@
 
 Prerequisite: When inside a git repository.
 
-Make a Git commit after each logically atomic change, attaching the current thread id.
+Make a Git commit after each logically atomic change, attaching the current thread id in commit description.
 
