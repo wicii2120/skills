@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ralph Loop"
+  short_description: "Start iterative self-referential work"
+  default_prompt: "Use $ralph-loop to start an iterative loop for this task."

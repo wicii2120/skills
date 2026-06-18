@@ -7,4 +7,5 @@ The LLMs generated skills are grounded in the following sources:
 
 - tanstack libs - official tanstack doc site and github repo
 - vue-router-v5-best-practices - [vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/main/skills/vue-router-best-practices) and official doc site
-- mattpocock-ralph - [mattpocock/skills](https://github.com/mattpocock/skills) and [cursor/plugins@ralph-loop](https://github.com/cursor/plugins/tree/main/ralph-loop)
+- mattpocock-ralph - orchestration over [mattpocock/skills](https://github.com/mattpocock/skills)
+- ralph-loop - generic iterative loop adapted from [cursor/plugins@ralph-loop](https://github.com/cursor/plugins/tree/main/ralph-loop)

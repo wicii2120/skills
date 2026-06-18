@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "ralph-loop": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "ralph-loop/skills/ralph-loop/SKILL.md",
+      "computedHash": "c63071d0eac1b81ea0df3c96a9991e77ea743cb07b00f5dc83b1973b5b096401"
+    }
+  }
+}
