@@ -79,7 +79,7 @@ Per iteration:
 3. Choose the smallest next action.
 4. Make surgical changes only.
 5. Run targeted verification.
-6. Record progress, verification, next step, and blockers in the issue/MR or `.ralph/runs/<id>.md`.
+6. Record progress, verification, next step, and blockers in the issue/MR or `.agents/ralph/runs/<id>.md`.
 7. Decide whether `NO_AFK_WORK_REMAINS` is true.
 
 Completion:
