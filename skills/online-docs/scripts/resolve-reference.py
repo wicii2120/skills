@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
-"""Resolve online-docs REFERENCE.json mappings with fzf.
-
-Looks for mappings in:
-  1. this skill directory's REFERENCE.json bundled seed
-  2. ~/.knowledge/online-docs/REFERENCE.json
-
-Cross-project user mappings override bundled mappings with the same
-normalized key.
+"""Resolve ~/.knowledge/online-docs/REFERENCE.json mappings with fzf.
 
 Usage:
   python3 scripts/resolve-reference.py react "Node docs" vite
@@ -29,6 +22,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 FIELD_SEP = "\x1f"
+REFERENCE_PATH = Path.home() / ".knowledge" / "online-docs" / "REFERENCE.json"
 NOISE_TOKENS = {
     "doc",
     "docs",
@@ -46,15 +40,7 @@ NOISE_TOKENS = {
 class Entry:
     key: str
     value: str
-    source: str
-    reference_path: Path
-    base_dir: Path
     aliases: tuple[str, ...]
-
-    @property
-    def priority(self) -> int:
-        priorities = {"user": 0, "bundled": 1}
-        return priorities.get(self.source, 9)
 
 
 @dataclass(frozen=True)
@@ -118,26 +104,22 @@ def is_remote(value: str) -> bool:
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
 
 
-def resolved_value(entry: Entry) -> str:
-    return entry.value
-
-
 def entry_to_json(match: FzfMatch, *, candidate: str, query: str, confidence: str) -> dict[str, Any]:
     entry = match.entry
     return {
         "candidate": candidate,
         "key": entry.key,
         "value": entry.value,
-        "resolved_value": resolved_value(entry),
-        "source": entry.source,
-        "reference_path": str(entry.reference_path),
+        "resolved_value": entry.value,
+        "source": "knowledge",
+        "reference_path": str(REFERENCE_PATH),
         "matched_alias": match.alias,
         "query": query,
         "confidence": confidence,
     }
 
 
-def extract_mapping_value(key: str, value: Any, reference_path: Path) -> tuple[str, tuple[str, ...]]:
+def extract_mapping_value(key: str, value: Any) -> tuple[str, tuple[str, ...]]:
     if isinstance(value, str):
         return value, ()
 
@@ -147,7 +129,7 @@ def extract_mapping_value(key: str, value: Any, reference_path: Path) -> tuple[s
         location = value.get("location") or value.get("url") or value.get("path")
         aliases = value.get("aliases", ())
         if not isinstance(location, str) or not location.strip():
-            raise SystemExit(f"{reference_path}: mapping for {key!r} needs string location/url/path")
+            raise SystemExit(f"{REFERENCE_PATH}: mapping for {key!r} needs string location/url/path")
         if isinstance(aliases, str):
             aliases = (aliases,)
         elif isinstance(aliases, list) and all(isinstance(alias, str) for alias in aliases):
@@ -155,66 +137,38 @@ def extract_mapping_value(key: str, value: Any, reference_path: Path) -> tuple[s
         elif aliases in (None, ()):  # tolerate missing/null aliases
             aliases = ()
         else:
-            raise SystemExit(f"{reference_path}: aliases for {key!r} must be string or string list")
+            raise SystemExit(f"{REFERENCE_PATH}: aliases for {key!r} must be string or string list")
         return location, tuple(aliases)
 
-    raise SystemExit(f"{reference_path}: mapping for {key!r} must be string or object")
+    raise SystemExit(f"{REFERENCE_PATH}: mapping for {key!r} must be string or object")
 
 
-def load_reference(reference_path: Path, source: str, base_dir: Path) -> list[Entry]:
-    if not reference_path.exists():
-        return []
+def load_entries() -> tuple[list[Entry], bool]:
+    if not REFERENCE_PATH.exists():
+        return [], False
 
     try:
-        data = json.loads(reference_path.read_text(encoding="utf-8"))
+        data = json.loads(REFERENCE_PATH.read_text(encoding="utf-8"))
     except json.JSONDecodeError as error:
-        raise SystemExit(f"{reference_path}: invalid JSON: {error}") from error
+        raise SystemExit(f"{REFERENCE_PATH}: invalid JSON: {error}") from error
     except OSError as error:
-        raise SystemExit(f"{reference_path}: failed to read: {error}") from error
+        raise SystemExit(f"{REFERENCE_PATH}: failed to read: {error}") from error
 
     if not isinstance(data, dict):
-        raise SystemExit(f"{reference_path}: expected top-level JSON object")
+        raise SystemExit(f"{REFERENCE_PATH}: expected top-level JSON object")
 
     entries: list[Entry] = []
     for key, raw_value in data.items():
         if not isinstance(key, str) or not key.strip():
-            raise SystemExit(f"{reference_path}: mapping keys must be non-empty strings")
-        value, extra_aliases = extract_mapping_value(key, raw_value, reference_path)
+            raise SystemExit(f"{REFERENCE_PATH}: mapping keys must be non-empty strings")
+        value, extra_aliases = extract_mapping_value(key, raw_value)
         if not is_remote(value):
             raise SystemExit(
-                f"{reference_path}: online-docs mapping for {key!r} must be an http(s) URL"
+                f"{REFERENCE_PATH}: online-docs mapping for {key!r} must be an http(s) URL"
             )
-        entries.append(
-            Entry(
-                key=key,
-                value=value,
-                source=source,
-                reference_path=reference_path,
-                base_dir=base_dir,
-                aliases=split_aliases(key, extra_aliases),
-            )
-        )
-    return entries
+        entries.append(Entry(key=key, value=value, aliases=split_aliases(key, extra_aliases)))
 
-
-def load_entries(skill_dir: Path) -> tuple[list[Entry], list[Path]]:
-    bundled_reference = skill_dir / "REFERENCE.json"
-    user_reference = Path.home() / ".knowledge" / "online-docs" / "REFERENCE.json"
-
-    # Load low-to-high precedence so normalized duplicate keys override.
-    loaded: list[Path] = []
-    entries_by_key: dict[str, Entry] = {}
-    for reference_path, source, base_dir in (
-        (bundled_reference, "bundled", skill_dir),
-        (user_reference, "user", user_reference.parent),
-    ):
-        entries = load_reference(reference_path, source, base_dir)
-        if entries:
-            loaded.append(reference_path)
-        for entry in entries:
-            entries_by_key[normalize(entry.key)] = entry
-
-    return sorted(entries_by_key.values(), key=lambda entry: (entry.priority, normalize(entry.key))), loaded
+    return sorted(entries, key=lambda entry: normalize(entry.key)), True
 
 
 def collect_candidates(args: argparse.Namespace) -> list[str]:
@@ -296,10 +250,10 @@ def fzf_filter(query: str, records: list[str], by_id: dict[str, FzfMatch]) -> li
 
 
 def collapse_by_entry(matches: list[FzfMatch]) -> list[FzfMatch]:
-    seen: set[tuple[str, str]] = set()
+    seen: set[str] = set()
     collapsed: list[FzfMatch] = []
     for match in matches:
-        identity = (match.entry.source, normalize(match.entry.key))
+        identity = normalize(match.entry.key)
         if identity in seen:
             continue
         seen.add(identity)
@@ -342,14 +296,9 @@ def resolve_candidate(
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Resolve online-docs REFERENCE.json mappings via fzf.")
+    parser = argparse.ArgumentParser(description="Resolve online-docs mappings via fzf.")
     parser.add_argument("candidates", nargs="*", help="Candidate names to fuzzy-match.")
     parser.add_argument("--candidate-file", help="Newline-delimited candidate names.")
-    parser.add_argument(
-        "--skill-dir",
-        default=str(Path(__file__).resolve().parent.parent),
-        help="online-docs skill directory override.",
-    )
     return parser.parse_args()
 
 
@@ -358,9 +307,8 @@ def main() -> int:
         raise SystemExit("fzf not found on PATH; install fzf or add it to PATH")
 
     args = parse_args()
-    skill_dir = Path(args.skill_dir).resolve()
     candidates = collect_candidates(args)
-    entries, loaded_references = load_entries(skill_dir)
+    entries, loaded_reference = load_entries()
     records, by_id = build_fzf_records(entries)
 
     matches: list[dict[str, Any]] = []
@@ -379,9 +327,9 @@ def main() -> int:
                         {
                             "key": alternative.entry.key,
                             "value": alternative.entry.value,
-                            "resolved_value": resolved_value(alternative.entry),
-                            "source": alternative.entry.source,
-                            "reference_path": str(alternative.entry.reference_path),
+                            "resolved_value": alternative.entry.value,
+                            "source": "knowledge",
+                            "reference_path": str(REFERENCE_PATH),
                             "matched_alias": alternative.alias,
                         }
                         for alternative in alternatives
@@ -394,7 +342,7 @@ def main() -> int:
     print(
         json.dumps(
             {
-                "reference_files": [str(path) for path in loaded_references],
+                "reference_files": [str(REFERENCE_PATH)] if loaded_reference else [],
                 "search_tool": "fzf",
                 "matches": matches,
                 "ambiguous": ambiguous,

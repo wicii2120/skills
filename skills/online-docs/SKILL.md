@@ -13,14 +13,11 @@ Two modes, picked by argument: **read** (default) and **write**. Never enter
 write mode unless the user explicitly asks for `online-docs write` or says
 to add/update the online docs index.
 
-## Index locations
+## Index location
 
-Resolver precedence, highest last write wins:
+Source of truth: `~/.knowledge/online-docs/REFERENCE.json`.
 
-1. Bundled seed: `REFERENCE.json` in this skill directory
-2. Cross-project index: `~/.knowledge/online-docs/REFERENCE.json`
-
-The cross-project index overrides bundled entries.
+Do not add alternate indexes.
 
 Mapping format:
 
@@ -46,7 +43,8 @@ Resolve, cache, then inspect only selected docs.
    source/package/product per resolver argument; do not pass action words or
    whole task phrases. Preserve package punctuation when possible
    (`hey-api`, `@hey-api/openapi-ts`, `shadcn/ui`).
-2. Run resolver from this skill directory:
+2. Run resolver script. It reads only
+   `~/.knowledge/online-docs/REFERENCE.json`:
    ```bash
    python3 scripts/resolve-reference.py react Node.js vite
    ```
@@ -107,9 +105,10 @@ Add or update an online docs mapping only on explicit user request. Arg:
 3. **Dedup** — run `scripts/resolve-reference.py` for the source name and
    aliases. If a mapping already covers it, update that mapping in place;
    do not append a duplicate.
-4. **Write JSON** to `~/.knowledge/online-docs/REFERENCE.json` using the
-   mapping format above. Preserve existing entries and aliases. Prefer
-   object form when aliases are useful.
+4. **Write JSON** to the source of truth,
+   `~/.knowledge/online-docs/REFERENCE.json`, using the mapping format
+   above. Preserve existing entries and aliases. Prefer object form when
+   aliases are useful.
 5. **Verify** by resolving the name and fetching the URL:
    ```bash
    python3 scripts/resolve-reference.py <name-or-alias>
