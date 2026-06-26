@@ -57,10 +57,10 @@ Resolve, cache, then inspect only selected docs.
    ```bash
    python3 scripts/cache-url.py "https://example.com/docs"
    ```
-   Default cache root is `~/.cache/online-docs`. Cache hits return the
-   existing content path without network. If the user asks for latest docs,
-   use `--refresh`; if freshness matters but latest was not explicitly
-   requested, use a bounded revalidation such as `--max-age-hours 24`.
+   Default cache root is `~/.cache/online-docs`. Cached entries are reused
+   for 14 days by default, then conditionally revalidated. If the user asks
+   for latest docs, use `--refresh`. Override freshness with
+   `--max-age-hours N` when needed.
 4. Inspect the cached file. If it is an index (`llms.txt`, Markdown link
    list, HTML nav, JSON catalog), search that index for the user's topic and
    fetch only selected follow-up links from explicit links in the cached
@@ -83,7 +83,8 @@ The cache is optimized for repeat runs:
 
 - Cache key is the canonical URL: resolved base, no fragment, normalized
   scheme/host/port.
-- Default read is cache-first and persistent across sessions.
+- Default read is cache-first and persistent across sessions, with 14-day
+  stale revalidation.
 - `--refresh` and stale `--max-age-hours` runs send `If-None-Match` and
   `If-Modified-Since` when previous `ETag` or `Last-Modified` exists.
 - `304 Not Modified` reuses bytes and updates metadata; it does not

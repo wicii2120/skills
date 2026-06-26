@@ -41,6 +41,8 @@ TEXT_EXTENSIONS = {
     ".yml",
 }
 
+DEFAULT_MAX_AGE_HOURS = 14 * 24
+
 CONTENT_TYPE_EXTENSIONS = {
     "application/javascript": ".js",
     "application/json": ".json",
@@ -283,7 +285,8 @@ def main() -> int:
     parser.add_argument(
         "--max-age-hours",
         type=float,
-        help="Revalidate when cached metadata was last checked more than N hours ago.",
+        default=DEFAULT_MAX_AGE_HOURS,
+        help="Revalidate when cached metadata was last checked more than N hours ago. Defaults to 336 (14 days).",
     )
     parser.add_argument("--json", action="store_true", help="Print metadata JSON instead of content path.")
     args = parser.parse_args()
