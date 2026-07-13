@@ -1,52 +1,61 @@
 # deeds
 
-Use with the text-bank protocol in `SKILL.md`.
+Use with scope and text-bank protocols in `SKILL.md`.
 
-Cross-project pattern bank for successful patterns that took real time to
-work out. Use `gotchas` instead when reusable value is symptom/cause/fix.
-Start with one `index.md`; split by area only when sprawl makes scanning
-slow.
+Successful patterns that took real time to work out. Use `gotchas` instead
+when reusable value is mainly symptom/cause/fix.
 
-Store: `~/.knowledge/deeds/`  
-Append source: `~/.knowledge/deeds/index.md`
+## Artifact paths
 
-## read profile
+| target | store | write source |
+| --- | --- | --- |
+| global | `~/.knowledge/deeds/` | `~/.knowledge/deeds/index.md` |
+| local | `<project-root>/docs/agents/deeds/` | `<project-root>/docs/agents/deeds/index.md` |
 
-Keywords: domain words (`skills`, `Docker`, `chat UI`), stack names
-(`Nuxt`, `pnpm`, `GitLab`), pattern words (`migration`, `router`, `cache`,
-`screenshot diff`), and artifacts (`SKILL.md`, `Dockerfile`, `workflow`).
+## Read profile
 
-Search:
+Keywords: domain and stack names, package and internal module names, pattern
+words (`migration`, `router`, `cache`, `screenshot diff`), commands, scripts,
+and artifacts (`SKILL.md`, `Dockerfile`, `workflow`).
+
+Search all existing stores:
 
 ```bash
-rg -i -n '<kw1>|<kw2>|<kw3>' ~/.knowledge/deeds/
+rg -i -n '<kw1>|<kw2>|<kw3>' ~/.knowledge/deeds
+rg -i -n '<kw1>|<kw2>|<kw3>' <project-root>/docs/agents/deeds
 ```
 
-If unsure which keywords, skim `~/.knowledge/deeds/index.md`'s header for
-example searches and area index.
+If keywords are unclear, skim existing `index.md` headers for area indexes
+and example searches.
 
-Match/apply: if `problem shape:` matches, apply or adapt `move:`,
-`recipe:`, and `checks:`. Respect `constraints:` and `transfer notes:`.
+Match/apply: when `problem shape:` matches, apply or adapt `move:`, `recipe:`,
+and `checks:` while respecting `constraints:` and `transfer notes:`.
 
-No-match phrase: `no deed recorded for this`.
+No-match phrase: `no deed recorded for this globally or locally`.
 
-## write gate
+## Write eligibility
 
-Record only if all hold:
+Record only when all hold:
 
-- It took real time to work out, or collapsed repeated reasoning into a
-  reusable move.
-- It could recur in a different project/session, not tied to one codebase.
-- Outcome has evidence: tests, command output, merged code, screenshot
-  comparison, user acceptance, or another concrete check.
-- It is not mainly a footgun; write `gotchas` when the reusable value is
-  symptom/cause/fix.
+- Work took real time to solve or collapsed repeated reasoning into a reusable
+  move.
+- It can recur in selected target's scope: another project for `global`, or
+  this project for `local`.
+- Outcome has concrete evidence such as tests, command output, merged code,
+  screenshot comparison, or user acceptance.
+- It is not mainly a footgun; use `gotchas` for symptom/cause/fix.
 
-Strip: MR/issue numbers, commit shas, project file paths, org/team names,
-private URLs, temp paths, secrets. Keep reusable problem shape,
-constraints, move, recipe, checks, and evidence type.
+Target-specific sanitization:
 
-Append/edit format:
+- `global`: strip project paths and names, org/team names, issue numbers,
+  commit SHAs, private URLs, temporary paths, secrets, and personal data.
+- `local`: keep project paths, package names, scripts, and module names when
+  they make the pattern replayable. Strip secrets, credentials, personal
+  data, unnecessary private URLs, temporary paths, and chat-only context.
+
+Write only after the explicit target gate in `SKILL.md` passes.
+
+## Record format
 
 ```markdown
 ## [<area>] <short title> — <pattern tagline>

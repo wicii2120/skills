@@ -1,53 +1,65 @@
 # domains
 
-Use with the text-bank protocol in `SKILL.md`.
+Use with scope and text-bank protocols in `SKILL.md`.
 
-Cross-project domain facts.
+Stable domain facts: terminology, workflows, constraints, decisions, and
+invariants.
 
-Store: `~/.knowledge/domains/`  
-Source of truth: `~/.knowledge/domains/index.md`
+## Artifact paths
 
-## read profile
+| target | store | write source |
+| --- | --- | --- |
+| global | `~/.knowledge/domains/` | `~/.knowledge/domains/index.md` |
+| local | `<project-root>/docs/agents/domains/` | `<project-root>/docs/agents/domains/index.md` |
 
-Keywords: domain nouns, acronyms, workflow names, product names, user
-roles, API/resource names, file or package names carrying domain meaning,
-and exact user phrases.
+## Read profile
 
-Search, following symlinks:
+Keywords: domain nouns, acronyms, workflow and product names, user roles,
+API/resource names, meaningful file or package names, local service and
+environment names, and exact user phrases.
+
+Search all existing stores, following symlinks:
 
 ```bash
 rg -L -i -n '<kw1>|<kw2>|<kw3>' ~/.knowledge/domains
+rg -L -i -n '<kw1>|<kw2>|<kw3>' <project-root>/docs/agents/domains
 ```
 
-Match/apply: matching facts, constraints, decisions, invariants, and
-vocabulary.
+Match/apply: relevant facts, constraints, decisions, invariants, and
+vocabulary. Local facts take precedence for the current project when scope
+explains a conflict.
 
-No-match phrase: `no domain knowledge recorded for this`.
+No-match phrase: `no domain knowledge recorded for this globally or locally`.
 
-## write gate
+## Write eligibility
 
-Write only if the current user request explicitly asks for `domains write`,
-or says to record/update knowledge in `domains`.
+Record only stable, reusable knowledge backed by user-provided facts, source
+docs, code behavior, tests, production behavior, or explicit decisions. Skip
+transient debugging notes, guesses, secrets, credentials, and one-session
+state.
 
-Record only stable, reusable cross-project domain knowledge with evidence:
-user-provided facts, source docs, code behavior, tests, production
-behavior, or decisions. Skip transient debugging notes, guesses, secrets,
-credentials, and one-off session state.
+Target-specific scope:
 
-Strip: secrets, tokens, private URLs, temp paths, MR/issue numbers unless
-semantically meaningful, commit shas, personal data, chat-only context.
-Keep reusable facts and constraints.
+- `global`: knowledge useful across projects. Strip private URLs, temporary
+  and project-specific paths, issue numbers unless meaningful, commit SHAs,
+  org/team names, personal data, and chat-only context.
+- `local`: knowledge expected to recur in this project. Keep project names,
+  repo paths, modules, and issue numbers when useful to future work. Strip
+  secrets, tokens, unnecessary private URLs, temporary paths, personal data,
+  and chat-only context.
 
-Append/edit format:
+Write only after the explicit target gate in `SKILL.md` passes.
+
+## Record format
 
 ```markdown
 ## [<domain>] <short title>
 
 tags: <space-separated terms a future run would search>
 
-scope: <where this applies across projects>
+scope: <where this applies>
 
-source: <evidence: user statement, docs URL, test, command, observed system behavior>
+source: <evidence: user statement, docs URL/path, test, command, observed behavior>
 
 facts:
 - <stable domain fact>
