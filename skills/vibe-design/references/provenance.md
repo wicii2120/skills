@@ -1,6 +1,6 @@
 # Provenance and normativity
 
-This skill is self-contained at runtime. URLs document first-party provenance and standards; operational use does not require network access. Access/retrieval date: **2026-08-26**.
+This skill is self-contained at runtime. URLs document provenance and standards; operational use does not require network access. The original source audit was retrieved **2026-08-26**; Visual Style Lexicon research and Visual Style Examples were retrieved **2026-08-28**.
 
 ## linux.do terminology series
 
@@ -18,6 +18,61 @@ The series informed terminology and communication structure, not universal produ
 ## Supplemental professional guidance
 
 Spacing, Imagery, Motion & Interaction, Content & UX Writing, design-system lifecycle, evidence-based diagnosis, deliverable contracts, governance, implementation, and adoption are supplemental professional synthesis. This material is not attributed to the linux.do articles.
+
+## Visual Style Lexicon research
+
+All sources in this section were retrieved **2026-08-28**. Source keys appear on lexicon cards so historical and interface claims remain traceable. Popular style/prompting lists were used only to discover candidates and are neither cited nor treated as evidence. The inclusion gate favored institutional design history, professional archives, established UX guidance, first-party governed systems, and primary or peer-reviewed model research.
+
+### Design-history institutions and professional archives
+
+| Key | Source identity | Authority and use | Limits |
+| --- | --- | --- | --- |
+| **VH1** | Victoria and Albert Museum, [“Arts and Crafts: an introduction”](https://www.vam.ac.uk/articles/arts-and-crafts-an-introduction) | National design museum; supports the movement's making, material, social-purpose, and integrated-design core | British emphasis; historical evidence, not an interface prescription |
+| **VH2** | Victoria and Albert Museum, [“Art Nouveau — an international style”](https://www.vam.ac.uk/articles/art-nouveau-an-international-style) | National design museum; supports regional aliases, organic/geometric variants, asymmetry, and integration of structure and decoration | Broad international survey; interface translation is this skill's synthesis |
+| **VH3** | Victoria and Albert Museum, [“An introduction to Art Deco”](https://www.vam.ac.uk/articles/an-introduction-to-art-deco) | National design museum; supports the style's geometric, decorative, crafted, and machine-age boundaries | Object/interior history rather than UI guidance |
+| **TH1** | Tate Art Terms: [Bauhaus](https://www.tate.org.uk/art/art-terms/b/bauhaus), [Art Nouveau](https://www.tate.org.uk/art/art-terms/a/art-nouveau), [Constructivism](https://www.tate.org.uk/art/art-terms/c/constructivism), [De Stijl](https://www.tate.org.uk/art/art-terms/d/de-stijl), [Futurism](https://www.tate.org.uk/art/art-terms/f/futurism), [Pop Art](https://www.tate.org.uk/art/art-terms/p/pop-art), [Minimalism](https://www.tate.org.uk/art/art-terms/m/minimalism), and [Postmodernism](https://www.tate.org.uk/art/art-terms/p/postmodernism) | National art institution; independent movement definitions and adjacent-term boundaries | Concise fine-art glossary; graphic/interface cues are conservative translation, not Tate rules |
+| **BH1** | Stiftung Bauhaus Dessau, [official foundation site](https://www.bauhaus-dessau.de/en/) | Institution that preserves and researches the Bauhaus legacy; first-party historical identity and school scope | Does not define one universal “Bauhaus UI” or palette |
+| **SG1** | Museum für Gestaltung Zürich, [Graphic Design collection](https://museum-gestaltung.ch/en/graphic-design); Letterform Archive, [“Legacies of Swiss Style, Part 2 — Wolfgang Weingart”](https://letterformarchive.org/news/from-the-collection-legacies-of-swiss-style-part-2-wolfgang-weingart/) | Design museum plus nonprofit professional archive; supports Swiss graphic lineage and New Wave's grid/type boundary | The archive article centers Weingart; no claim that one typeface or layout is mandatory |
+| **MM1** | Museum of Modern Art, [“Good Design” exhibition record](https://www.moma.org/calendar/exhibitions/1714) | Design-history institution; supports the postwar modern-design context used to scope Mid-century Modern | Exhibition context, not a canonical interface grammar; direct retrieval was bot-restricted |
+| **ME1** | Memphis Milano, [official history](https://memphis.it/en/history/); Design Museum, [“Memphis Group: awful or awesome?”](https://designmuseum.org/discover-design/all-stories/memphis-group-awful-or-awesome) | First-party group record plus independent design museum; supports Memphis identity and postmodern boundary | Official site was bot-restricted; no Memphis motif is a universal component recipe |
+| **MX1** | Museum at FIT, [“Minimalism/Maximalism”](https://www.fitnyc.edu/museum/exhibitions/minimalism-maximalism.php) | Museum exhibition source for the abundance/reduction contrast | Fashion-centered and not an interface benchmark; Maximalism's UI translation remains contextual |
+| **ED1** | [AIGA Design Archives](https://designarchives.aiga.org/) and [Society of Publication Designers](https://www.spd.org/) | Established professional archive and publication-design body; support Editorial Design as a stable professional vernacular | Collections demonstrate practice rather than prescribe one editorial style |
+| **EW1** | VIEW Journal, [“Performatively Archiving the Early Web: One Terabyte of Kilobyte Age”](https://viewjournal.eu/articles/10.18146/view.293); Rhizome, [One Terabyte of Kilobyte Age](https://anthology.rhizome.org/one-terabyte-of-kilobyte-age); [Web Design Museum](https://www.webdesignmuseum.org/) | Peer-reviewed web-history article plus professional/specialist archives; support the Early Web vernacular and its period evidence | Preservation samples overrepresent memorable pages; archive sites were partly bot-restricted |
+
+Material historical claims use two independent sources where practical. A single institutional source supports narrower semantic cues when the card avoids contested dates, authorship, or causal claims.
+
+### Interface paradigms and governed systems
+
+| Key | Source identity | Authority and use | Limits |
+| --- | --- | --- | --- |
+| **UX1** | Nielsen Norman Group: [Minimalism](https://www.nngroup.com/articles/characteristics-minimalism/), [Flat Design / Flat 2.0](https://www.nngroup.com/articles/flat-design/), and [Skeuomorphism](https://www.nngroup.com/articles/skeuomorphism/) | Established UX research/practice source; supports paradigm boundaries, signifier risks, and neumorphism cautions | Professional research/editorial guidance, not a normative standard; examples reflect their publication periods |
+| **UX2** | Nielsen Norman Group: [Glassmorphism](https://www.nngroup.com/articles/glassmorphism/), [Web Brutalism](https://www.nngroup.com/articles/brutalism-antidesign/), and [Neobrutalism](https://www.nngroup.com/articles/neobrutalism/) | Established UX source; supports current interface names, distinctions, and usability/accessibility risks | Recent vernacular labels can continue to evolve; exact visual treatments remain contextual |
+| **SYS1** | [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/), [Material Design 3](https://m3.material.io/), and [Fluent 2](https://fluent2.microsoft.design/) | First-party current platform/system contracts; support governed-system routing and material boundaries | Version- and platform-sensitive; re-check official docs before implementation |
+| **SYS2** | [IBM Carbon](https://carbondesignsystem.com/), [GOV.UK Design System](https://design-system.service.gov.uk/), and [U.S. Web Design System](https://designsystem.digital.gov/) | First-party governed systems; demonstrate that components, content, accessibility, and implementation contracts outrank surface resemblance | Product- and jurisdiction-specific; not generic “technical” or “utilitarian” presets |
+
+WCAG and other normative standards listed below govern accessibility. NN/g and the style cards identify risks but cannot relax normative requirements.
+
+### Model-language premise and benchmark search
+
+| Key | Source identity | Authority and finding | Limits |
+| --- | --- | --- | --- |
+| **ML1** | Radford et al., [“Learning Transferable Visual Models From Natural Language Supervision”](https://proceedings.mlr.press/v139/radford21a.html), ICML 2021; Tang et al., [“What the DAAM”](https://aclanthology.org/2023.acl-long.310/), ACL 2023 | Peer-reviewed primary research supports natural-language/visual concept association and token-to-region attribution in the studied vision/image models | Does not establish universal label recognition, interface-code generation, or any coding agent's training data |
+| **ML2** | Liao et al., [ArtBench](https://arxiv.org/abs/2206.11404); Liu et al., [“Name Your Style”](https://openaccess.thecvf.com/content/CVPR2023W/CVFAD/html/Liu_Name_Your_Style_Text-Guided_Artistic_Style_Transfer_CVPRW_2023_paper.html), CVPR 2023 workshop | Primary dataset/research shows canonical art labels and text-guided styles can be operational concepts in image-model tasks | Art/image domains, not production UI; labels can remain underdetermined and results are model-specific |
+| **BENCH1** | Liu et al., [WebCoderBench](https://arxiv.org/abs/2601.02430), v2 March 2026; Si et al., [Design2Code](https://arxiv.org/abs/2403.03163), 2024 | Closest located web-generation benchmarks evaluate broad visual quality/alignment or screenshot fidelity | Neither isolates canonical style-name → canonical generated-UI fidelity; the negative search finding is time-bounded, not proof that no unpublished or future benchmark exists |
+
+**Premise limit:** canonical labels are useful leading words by reasoned hypothesis, not guaranteed presets. No direct benchmark was located for named-style fidelity in coding-agent UI generation, no model-specific probe was run, and no universal recognition or training-data claim is made.
+
+### Source and license handling
+
+- Source pages and papers support factual boundaries; the runtime cards are new, compact paraphrases and interface translations. No substantial source prose, code, dataset, paper, or image is redistributed. The examples catalog links to authoritative pages instead of embedding or hotlinking any image, and reproduces no source prose.
+- Institution and system names identify provenance. Third-party images, logos, fonts, palettes, component files, and archival source dumps remain outside this repository.
+- Bot-restricted pages are used only for claims corroborated by accessible institutional/professional sources or clearly limited in the table. Runtime use does not depend on network access.
+
+### Visual Style Examples sources
+
+The [Visual Style Examples](visual-style-examples.md) catalog links to pages fetched and verified **2026-08-28** in a rendered browser or via full-page fetch. Institutions: V&A, The Met, MoMA, Tate, NGV, The Museum at FIT, Letterform Archive, Nielsen Norman Group, and the Web Design Museum (specialist archive). Verification evidence per page: rendered title plus the cited work and image alt/caption observed, except where the entry records a bot wall or a full-page-fetch fallback (MoMA and Web Design Museum pages serve interactive clients a Cloudflare interstitial but were verified through rendered/full-page retrieval; NN/g skeuomorphism and brutalism pages intermittently served transient 502s before success).
+
+Reuse constraints: museum object pages state non-commercial download terms only (V&A: research/teaching, ≤A5 print, ≤768 px online for 5 years; commercial use requires their image licensing) or restricted viewing (Met: image cannot be enlarged or downloaded). NN/g pages reserve all rights; first-party platform material reproduced inside them remains © Apple/Microsoft. No example grants production-use rights; production work still requires rights clearance through each source's own route and the governed-system contracts above.
 
 ## Pinned upstream synthesis
 
@@ -50,13 +105,14 @@ Cite exact WCAG success criteria for normative requirements. Stricter values are
 
 ## Contextual craft and product-policy defaults
 
-Aesthetic families, AI-default smells, exact font/palette/theme choices, intent-dimension numbers, hero limits, card/bento/eyebrow/punctuation preferences, motion bands/curves/springs, package recommendations, performance targets, and dark-mode scope are non-normative. They become binding only through evidence, explicit constraints, or governed product policy.
+Aesthetic families, Visual Style Lexicon anchors and modifiers, AI-default smells, exact font/palette/theme choices, intent-dimension numbers, hero limits, card/bento/eyebrow/punctuation preferences, motion bands/curves/springs, package recommendations, performance targets, and dark-mode scope are non-normative. They become binding only through evidence, explicit constraints, or governed product policy.
 
 ## Excluded or superseded material
 
 - Anthropic document-production skills and unrelated API/meta/communications tooling: outside scope; source-available document material is non-reusable.
 - General poster, presentation, GIF, and generative-art production mechanics: outside interface scope; only relevant philosophy is synthesized.
 - Taste-skill tipping/stakes prompts, seasonal claims, model-behavior studies, provider economics, unavailable parameter advice, and other unsupported secondary claims: excluded.
+- Popular “styles for prompting” lists: candidate discovery only; excluded as authority and from model-recognition claims.
 - Source-specific universal bans and mandatory dark/image/motion defaults: superseded by contextual evidence and the mode contracts.
 - Sonner-specific API guidance, generic Swift language guidance, hardcoded package lists, and cached installation recipes: superseded by project-first adapters and primary-source verification.
 

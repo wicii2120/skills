@@ -40,6 +40,7 @@ Load exactly the current phase’s workflow. Add only references triggered by in
 | Cross-cutting trigger | Read |
 | --- | --- |
 | Concrete visual direction, composition, aesthetic judgment, craft critique, Design Read, or anti-default review | [Visual Direction & Taste](references/visual-direction.md) |
+| Named style, style comparison or explanation, style-led exploration, or unresolved direction where named alternatives reduce decision risk | [Visual Style Lexicon](references/visual-style-lexicon.md) |
 | Direction is unresolved, alternatives reduce decision risk, or the user requests variants | [Prototyping & Variant Exploration](references/prototyping.md) |
 | Runnable UI, code change, rendering, screenshot inspection, or output-completeness obligation | [Implementation & Visual Iteration](references/implementation-iteration.md) |
 | A token file, contract, state matrix, specification, brief, theme, reference-image plan, motion review, or migration artifact is requested | [Deliverable Templates](references/deliverables.md) |

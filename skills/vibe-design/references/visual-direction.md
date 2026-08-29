@@ -44,11 +44,21 @@ Record why each position suits the task. A regulated daily tool may need low var
 - **Complexity fit:** maximal directions demand implementation depth; minimal directions demand precision. Choose a direction the available team, stack, assets, and verification can execute completely.
 - **Mode scope:** light/dark is a product/system decision. A named theme may be light, dark, adaptive, or mode-independent; never add dark mode solely as a taste signal.
 
-## 4. Choose from contextual aesthetic families
+## 4. Route visual vocabulary
 
-Aesthetic families are exploration vocabulary, not packages or default recipes. Examples include editorial, utilitarian, industrial/brutalist, soft/material, restrained minimal, kinetic/expressive, playful, archival, technical, luxury, or platform-native. Combine only when the concept explains the seam.
+A named style is optional: derive the direction directly from the Design Read when a label would add no decision value. Otherwise route rather than improvise a style recipe:
 
-For a named theme, define its subject/audience fit, semantic palette roles, type roles, shape/material rules, imagery, motion personality, density, responsive behavior, accessibility, and anti-patterns. Theme names describe the concept rather than claiming a universal best use.
+| Signal | Route |
+| --- | --- |
+| A named style is supplied, compared, explained, or useful for grounded alternatives | Load the [Visual Style Lexicon](visual-style-lexicon.md); select one anchor and translate it through the foundations. |
+| A mood, period, material, genre, or tonal word is supplied | Treat it as a possible modifier; clarify only when ambiguity changes the result. |
+| Two styles are combined | Require the lexicon's conceptual seam and conflict rule before concrete design. |
+| A branded system or platform-native direction is supplied | Use its current official contract and the adopted project implementation; aesthetic shorthand cannot override either. |
+| Direction remains unresolved after naming | Load Prototyping & Variant Exploration and compare structurally divergent, equally usable directions. |
+
+Treat the prior family vocabulary—editorial, utilitarian, industrial/brutalist, soft/material, restrained minimal, kinetic/expressive, playful, archival, technical, luxury, and platform-native—as request signals. The lexicon records each term's anchor, modifier, broader-family, technique, or governed-system disposition; this file does not maintain a competing catalog.
+
+After selection, translate characteristic cues into subject/audience fit, semantic roles, type, composition, material, imagery, motion, density, responsive behavior, and anti-patterns. The applicable foundations supply the actual contracts and accessibility checks.
 
 ## 5. Use the AI-default smell catalog
 
