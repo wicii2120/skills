@@ -40,8 +40,9 @@ Viewport
 
 - Start in normal flow. Use Flexbox for one-axis distribution and Grid for two-dimensional track relationships; position out of flow only when overlap or viewport attachment is intrinsic.
 - Derive behavior thresholds from content failure, not device names. Record the before/after behavior and boundary cases.
-- Prefer intrinsic sizing and wrapping where content can determine a safe result. Fixed tracks are predictable but fail earlier under translation and zoom.
-- Use container queries for reusable embedded components and media queries for viewport, device, and user-preference concerns.
+- Prefer intrinsic sizing and wrapping where content can determine a safe result. Record when flexible children may shrink below their automatic min-content size; fixed tracks and clipping fail earlier under translation and zoom.
+- Define a query-free usable base. Use container queries for reusable embedded components and media queries for viewport, device, and user-preference concerns; each threshold enhances at an observed content failure.
+- Decide whether nested regions own independent tracks or inherit parent alignment. Shared tracks are a composition contract, not a default.
 - Treat composition as information: asymmetry, overlap, dividers, numbering, and cards need a structural reason.
 - Separate structural gutters from semantic spacing relationships.
 - Diagnose stacking contexts before increasing z-index and define semantic layers for recurring overlays.
@@ -84,6 +85,6 @@ Use logical properties and keep source order meaningful when tracks rearrange vi
 
 ## Agent-ready wording and acceptance checks
 
-> Specify Grid & Layout for **[artifact]** with container bounds, tracks, gutters, spans, source/focus order, intrinsic sizing, content-driven thresholds, container responses, overflow ownership, and safe-area behavior. Explain how composition expresses the task and hierarchy. Verify boundary widths, long/localized content, 200%/400% zoom, text spacing, sticky focus visibility, and scroll ownership.
+> Specify Grid & Layout for **[artifact]** with container bounds, tracks, gutters, spans, source/focus order, intrinsic and min-content behavior, content-driven thresholds, nested alignment ownership, container responses, overflow ownership, and safe-area behavior. Explain how composition expresses the task and hierarchy. Verify boundary widths, supported writing directions, long/localized content, 200%/400% zoom, text spacing, sticky focus visibility, and scroll ownership.
 
 **Accept when:** hierarchy and task survive every boundary; source and focus order remain meaningful; no content clips; structural devices encode real relationships; scroll/layer ownership is explicit; reflow checks pass.

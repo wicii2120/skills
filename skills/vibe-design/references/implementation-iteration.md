@@ -43,10 +43,10 @@ Implement real semantics, complete states, content, responsive behavior, and acc
 
 Use the strongest available rendering path. Complete at least one full cycle covering:
 
-- representative wide and narrow boundaries, plus behavior-change edges;
+- representative wide and narrow viewport boundaries, embedded container contexts, and behavior-change edges;
 - default and meaningful hover/focus/active/disabled/loading/empty/error/success states;
-- realistic, long, and localization-stress content;
-- keyboard operation, focus visibility, target behavior, and reduced motion;
+- realistic, long, unbroken, and localization-stress content;
+- keyboard operation, focus visibility, target behavior, reduced motion, forced colors, and declared user preferences;
 - responsive hierarchy, alignment, density, overflow, layout stability, and asset crops;
 - semantic structure and accessibility tree;
 - console, network, hydration, and runtime errors applicable to the stack;

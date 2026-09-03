@@ -1,6 +1,6 @@
 ---
 name: comment-discipline
-description: Comment discipline — the Echo Test for code comments. Use when a changed region contains comments or comments are being written; resolves whether each stays or goes.
+description: "MANDATORY: Always read this skill before writing, editing, or removing any code comment, then apply its Echo Test. Also use it when a changed region contains comments."
 ---
 
 # Comment Discipline

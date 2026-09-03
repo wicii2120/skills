@@ -13,7 +13,8 @@ Inspect package and lock files, framework/router version, server/client boundary
 - Keep semantic structure, state machine, content, responsive behavior, and accessibility independent of component syntax.
 - Treat props as intent (`emphasis`, `tone`, `state`) rather than raw styling switches.
 - Keep framework component boundaries aligned with behavior/state ownership; avoid a global client boundary for local interaction.
-- Emit token values through the project’s existing theme/custom-property pipeline. Utility classes and generated names are adapter details.
+- Emit token values through the project’s existing theme/custom-property pipeline and keep global cascade/layer ownership at that boundary. Utility classes and generated names are adapter details.
+- Keep visual-only support detection and progressive fallback in CSS when markup/state is unchanged; a render-time `CSS.supports()` branch can create hydration and behavior drift.
 
 ## 3. Apply only detected sub-adapters
 
@@ -23,7 +24,7 @@ Use existing routing, rendering, data, and client-component conventions. Isolate
 
 ### Tailwind
 
-Confirm the installed major version and project configuration. Reuse configured tokens, variants, and class-composition conventions. Avoid arbitrary utilities that fork semantic roles. Keep long class strings out of the portable contract.
+Confirm the installed major version and project configuration. Reuse configured tokens, variants, layers, and class-composition conventions. Inspect generated CSS so preflight, plugins, components, and utilities resolve in the intended order. Use arbitrary utilities only when they do not fork semantic roles or split a feature/fallback pair across component conditionals. Keep long class strings out of the portable contract.
 
 ### Motion
 

@@ -46,14 +46,14 @@ Choose one path per worker.
 
 ### Named, resumable tmux path
 
-- Launch each tmux-classified worker in a named tmux session; related workers may share separate panes or windows in one session.
+- Group the wave's tmux-classified workers into one named tmux session, one window or pane per worker; each later wave gets its own named session.
 - Start interactive Pi with the brief's content as its initial message and keep a named, resumable Pi session, carrying `PI_SESSION_AFFINITY_PARENT="$PI_SESSION_ID"` in the launched Pi's environment (e.g. `tmux new-session -d -s w1 "PI_SESSION_AFFINITY_PARENT='$PI_SESSION_ID' pi …"`).
 - Record the tmux session/window/pane and Pi session; add `tmux pipe-pane` when recovery requires a durable terminal log.
 - Continue parent work after launch. The parent owns observation: identify the worker by pane PID and child process tree, steer it as needed, record its outcome, and exit Pi after work settles.
 
 Record confirmed findings needed by later waves before writing their briefs.
 
-**Gate:** Every subprocess has a completed call/process handle, output destination, and real exit status; every tmux worker has session identifiers and an observed terminal status; every claimed artifact, commit, or finding is identified; every worker launch carries `PI_SESSION_AFFINITY_PARENT="$PI_SESSION_ID"`.
+**Gate:** Every subprocess has a completed call/process handle, output destination, and real exit status; every tmux worker has session identifiers, an observed terminal status, and its wave's shared named session; every claimed artifact, commit, or finding is identified; every worker launch carries `PI_SESSION_AFFINITY_PARENT="$PI_SESSION_ID"`.
 
 ## 4. Integrate and close
 

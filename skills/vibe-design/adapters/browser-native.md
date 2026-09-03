@@ -8,6 +8,8 @@ Read existing markup, CSS architecture, browser matrix, progressive-enhancement 
 
 **Gate:** The browser matrix, existing convention, and enhancement/fallback boundary are explicit.
 
+For non-trivial CSS architecture, reusable responsive components, support-gated platform features, or measured CSS performance work, read [Browser CSS Practices](../references/browser-css.md). A local one-rule visual correction does not trigger it.
+
 ## 2. Map the portable contract
 
 - Use native elements and HTML relationships before custom roles/handlers.
